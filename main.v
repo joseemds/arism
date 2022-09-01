@@ -1,16 +1,11 @@
 import os
 
-import ast
-
-import parser
-
-import assembly
+import lexer
 
 fn main(){
-	file := os.args[1]
-	println(file)
-	
-	parser.parse([ast.Ast(ast.Op(ast.Add{})), ast.Ast(ast.Num{value: 2}), ast.Ast(ast.Num{value: 2})])
-	instrs := ([ast.Ast(ast.Op(ast.Add{})), ast.Ast(ast.Num{value: 2}), ast.Ast(ast.Num{value: 2})])
-	assembly.write_instrs(file, instrs)
+	input_file := os.args[1]
+	// output_file := os.args[2]
+
+	lexbuf := lexer.from_file(input_file)
+	println(lexer.scan_tokens(lexbuf))
 }

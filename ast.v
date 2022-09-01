@@ -1,11 +1,8 @@
 module ast
 
 
-pub struct Add {}
-pub struct Sub {}
-
 pub struct Num {pub: value int}
 
-pub type Op = Add | Sub
+pub enum Op { add  sub }
 
 pub type Ast = Op | Num
